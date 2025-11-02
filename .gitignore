@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/TailwindBlazor/tailwind.extension.json
+/TailwindBlazor/tailwind.css
+/TailwindBlazor/package.json
+/TailwindBlazor/package-lock.json
