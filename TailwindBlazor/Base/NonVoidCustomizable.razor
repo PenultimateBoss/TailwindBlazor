@@ -1,0 +1,17 @@
+﻿@inherits NonVoidComponent
+@code
+{
+    [Parameter] public RenderFragment<Args>? Custom { get; set; }
+    [Parameter] public RenderFragment<Args>? Default { get; set; }
+
+    public sealed record class Args(string? Class, Dictionary<string, object>? Attributes, RenderFragment ChildContent);
+}
+
+@if(Custom is null)
+{
+    @Default?.Invoke(new Args(Class, Attributes, ChildContent))
+}
+else
+{
+    @Custom.Invoke(new Args(Class, Attributes, ChildContent))
+}

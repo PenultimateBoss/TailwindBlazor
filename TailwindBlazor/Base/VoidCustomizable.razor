@@ -1,0 +1,17 @@
+﻿@inherits VoidComponent
+@code
+{
+    [Parameter] public RenderFragment<Args>? Custom { get; set; }
+    [Parameter] public RenderFragment<Args>? Default { get; set; }
+
+    public sealed record class Args(string? Class, Dictionary<string, object>? Attributes);
+}
+
+@if(Custom is null)
+{
+    @Default?.Invoke(new Args(Class, Attributes))
+}
+else
+{
+    @Custom.Invoke(new Args(Class, Attributes))
+}
